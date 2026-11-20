@@ -27,4 +27,6 @@ export const Errors = {
   invalidEmail: () => new AppError('INVALID_EMAIL', 'Enter a valid email address.', 400),
   aiUnavailable: () =>
     new AppError('AI_UNAVAILABLE', 'Lyra is unavailable right now. Try again shortly.', 503),
+  rateLimited: () =>
+    new AppError('RATE_LIMITED', 'Too many requests. Please try again in a minute.', 429),
 };

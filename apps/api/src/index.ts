@@ -10,7 +10,12 @@ import { lyraRoutes } from './routes/lyra.routes';
 import { webhookRoutes } from './routes/webhook.routes';
 
 export async function buildApp() {
-  const app = Fastify({ logger: env.nodeEnv !== 'test' });
+  // trustProxy: the API runs behind Railway/Render/Vercel routing, so the
+  // real client IP arrives in X-Forwarded-For. The public calculator's
+  // per-IP rate limit reads request.ip, which needs this to be per-user
+  // instead of one shared proxy IP. Auth still uses JWT, so a spoofed
+  // header only affects rate limiting, never access.
+  const app = Fastify({ logger: env.nodeEnv !== 'test', trustProxy: true });
 
   await registerCors(app);
   registerErrorHandler(app);
