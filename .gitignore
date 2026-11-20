@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Builds
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Env & secrets (NEVER commit real keys)
+.env
+.env.local
+.env.*.local
+!.env.example
+apps/*/.env
+apps/*/.env.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Turbo
+.turbo/
+
+# Test artifacts
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+*.pem
+*.key
+.vercel
